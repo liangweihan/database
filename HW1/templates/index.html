@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>履歷提交</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>提交你的履歷</h1>
+    <form action="/submit" method="POST">
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">年齡：</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="email">電子郵件：</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">電話號碼：</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="experience">工作經歷：</label>
+        <textarea id="experience" name="experience" rows="4" cols="50" placeholder="請描述你的工作經歷"></textarea>
+
+        <button type="submit">提交履歷</button>
+    </form>
+
+    <h2>已提交的履歷</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年齡</th>
+            <th>電子郵件</th>
+            <th>電話號碼</th>
+            <th>工作經歷</th>
+            <th>操作</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.experience }}</td>
+            <td>
+                <form action="/delete/{{ user.id }}" method="POST">
+                    <button type="submit">刪除</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
