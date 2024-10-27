@@ -6,6 +6,7 @@
 # 課程筆記區  
 # 作業連結區
 [HW1](https://www.youtube.com/watch?v=KHBWYuxntek)<br/>
-[HW2](https://youtu.be/p8P8QXNqst8)<br/>
+[HW2](https://youtu.be/p8P8QXNqst8)
+[ER diagram](https://youtu.be/p8P8QXNqst8)
 # 專題連結區 
 # 工具列
