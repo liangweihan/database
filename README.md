@@ -5,5 +5,6 @@
 系級：科技系三年級
 # 課程筆記區  
 # 作業連結區
+[HW1](https://www.youtube.com/watch?v=KHBWYuxntek)<br/>
 # 專題連結區 
 # 工具列
