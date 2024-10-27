@@ -1,0 +1,97 @@
+/* 全局樣式 */
+body {
+    background-color: #f0f4f8; /* 背景色偏淺藍，讓網頁看起來更柔和 */
+    font-family: Arial, sans-serif;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 標題樣式 */
+h1, h2, h3 {
+    color: #0056b3; /* 深藍色，增加標題的辨識度 */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 區塊樣式 */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+    border-radius: 8px; /* 圓角 */
+}
+
+/* 表單樣式 */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #555555;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #007bff; /* 藍色按鈕 */
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3; /* 深藍色的hover效果 */
+}
+
+/* 表格樣式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #dddddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff; /* 深藍色表頭 */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* 條紋效果 */
+}
+
+/* 錨點和按鈕的自訂樣式 */
+a, .btn {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+a:hover, .btn:hover {
+    background-color: #0056b3;
+}
+

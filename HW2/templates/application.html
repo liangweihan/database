@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>申請資訊</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <h1>申請資訊</h1>
+    <table border="1">
+        <tr>
+            <th>姓名</th>
+            <th>性別</th>
+            <th>年齡</th>
+            <th>電話</th>
+            <th>電子郵件</th>
+            <th>工作經驗</th>
+            <th>審核狀態</th>
+        </tr>
+        {% for row in join_data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>{{ row[6] }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="7">沒有資料可顯示</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">返回主頁</a>
+</body>
+</html>

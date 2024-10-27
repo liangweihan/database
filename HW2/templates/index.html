@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>個人資訊與工作經驗表單</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>個人資訊與工作經驗</h1>
+
+    <!-- 新增資料表單 -->
+    <form action="/add" method="POST">
+        <h2>新增個人資訊</h2>
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="gender">性別：</label>
+        <input type="text" id="gender" name="gender" required><br>
+
+        <label for="age">年齡：</label>
+        <input type="number" id="age" name="age" required><br>
+
+        <label for="phone">電話：</label>
+        <input type="text" id="phone" name="phone" required><br>
+
+        <label for="email">電子郵件：</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="experience">工作經驗：</label>
+        <textarea id="experience" name="experience_details" required></textarea><br>
+
+        <button type="submit">提交</button>
+    </form>
+
+    <h2>現有記錄</h2>
+
+    <!-- 顯示 personal_info 表格 -->
+    <h3>個人資訊</h3>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>性別</th>
+            <th>年齡</th>
+            <th>電話</th>
+            <th>電子郵件</th>
+            <th>操作</th>
+        </tr>
+        {% for person in personal_info %}
+        <tr data-id="{{ person.id }}">
+            <td>{{ person.id }}</td>
+            <td>
+                <form action="/update_user" method="POST">
+                    <input type="hidden" name="id" value="{{ person.id }}">
+                    <input type="text" name="name" value="{{ person.name }}" required>
+            </td>
+            <td><input type="text" name="gender" value="{{ person.gender }}" required></td>
+            <td><input type="number" name="age" value="{{ person.age }}" required></td>
+            <td><input type="text" name="phone" value="{{ person.phone }}" required></td>
+            <td><input type="email" name="email" value="{{ person.email }}" required></td>
+            <td>
+                <button type="submit">更新</button> | 
+                <a href="/delete/{{ person.id }}" onclick="return confirm('確定要刪除這位使用者及其所有相關資料嗎？');">刪除</a>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- 顯示 experience 表格 -->
+    <h3>工作經驗</h3>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>經驗詳情</th>
+            <th>操作</th>
+        </tr>
+        {% for exp in experience %}
+        <tr data-id="{{ exp.id }}">
+            <td>{{ exp.id }}</td>
+            <td>
+                <form action="/update_experience" method="POST">
+                    <input type="hidden" name="id" value="{{ exp.id }}">
+                    <input type="text" name="experience_details" value="{{ exp.experience_details }}" required>
+            </td>
+            <td>
+                <button type="submit">更新</button> | 
+                <a href="/delete/{{ exp.user_id }}" onclick="return confirm('確定要刪除這筆工作經驗及相關資料嗎？');">刪除</a>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>    
+
+    <!-- 顯示 status 表格 -->
+    <h3>是否錄取</h3>
+    <table border="1">
+        <tr>
+            <th>記錄ID</th>
+            <th>是否錄取</th>
+            <th>操作</th>
+        </tr>
+        {% for stat in status %}
+        <tr>
+            <td>{{ stat.record_id }}</td>
+            <td>
+                <form action="/update_status" method="POST">
+                    <input type="hidden" name="record_id" value="{{ stat.record_id }}">
+                    <input type="text" name="status" value="{{ stat.status }}" required>
+            </td>
+            <td>
+                <button type="submit">更新</button> | 
+                <a href="/delete/{{ stat.user_id }}" onclick="return confirm('確定要刪除此錄取記錄及所有相關資料嗎？');">刪除</a>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/application">前往申請頁面</a>
+</body>
+</html>
